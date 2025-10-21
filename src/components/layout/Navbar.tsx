@@ -11,7 +11,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Link } from "react-router";
-
 import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { ModeToggle } from "./mode-toggle";
 import Profile from "./Profile";
@@ -29,42 +28,34 @@ export default function Navbar() {
   const { data } = useUserInfoQuery(undefined);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md transition-colors duration-300">
-      <div className="max-w-7xl mx-auto flex items-center justify-between py-3 px-4 md:px-16">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/40 dark:bg-black/30 backdrop-blur-md border-b border-white/20 dark:border-white/10 transition-all duration-500">
+      <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-5 md:px-12">
         {/* Left side */}
         <div className="flex items-center gap-6">
           {/* Mobile menu */}
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden hover:bg-emerald-400/20 transition-all"
+              >
                 <svg
                   className="pointer-events-none"
-                  width={16}
-                  height={16}
+                  width={18}
+                  height={18}
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M4 12L20 12"
-                    className="origin-center -translate-y-[7px] transition-all duration-300"
-                  />
-                  <path
-                    d="M4 12H20"
-                    className="origin-center transition-all duration-300"
-                  />
-                  <path
-                    d="M4 12H20"
-                    className="origin-center translate-y-[7px] transition-all duration-300"
-                  />
+                  <path d="M4 6H20M4 12H20M4 18H20" />
                 </svg>
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="start" className="w-40 p-1 md:hidden">
+            <PopoverContent align="start" className="w-44 p-2 md:hidden">
               <NavigationMenu className="max-w-none">
                 <NavigationMenuList className="flex-col gap-2">
                   {navigationLinks.map((link, index) => (
@@ -72,7 +63,7 @@ export default function Navbar() {
                       <NavigationMenuLink asChild>
                         <Link
                           to={link.href}
-                          className="block w-full py-2 px-3 rounded hover:bg-primary/10 transition"
+                          className="block w-full py-2 px-3 rounded-md hover:bg-emerald-400/20 transition-all text-sm font-medium"
                         >
                           {link.label}
                         </Link>
@@ -85,52 +76,38 @@ export default function Navbar() {
           </Popover>
 
           {/* Logo */}
-
           <Link
             to="/"
-            className="text-2xl flex items-center gap-3 font-bold text-primary dark:text-primary-light hover:text-primary/90 transition group relative"
+            className="text-2xl flex items-center gap-2 font-extrabold text-gray-900 dark:text-white hover:text-emerald-400 transition group"
           >
             <motion.div
-              className="relative"
-              animate={{
-                x: [0, 10, 0, -10, 0],
-              }}
+              className="relative drop-shadow-[0_0_10px_rgba(52,211,153,0.5)]"
+              animate={{ rotate: [-5, 5, -5] }}
               transition={{
-                duration: 4,
+                duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
-              <motion.img
-                src="https://cdn-icons-png.freepik.com/512/10028/10028767.png?ga=GA1.1.1697682617.1758554927"
-                alt="logo"
-                className="w-[40px]"
-                animate={{
-                  rotate: [-2, 2, -2],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+
             </motion.div>
-            <span className=" transition-all duration-300">
-              LoopRide
+            <span className="tracking-wide bg-gradient-to-r from-emerald-400 to-emerald-500 dark:from-emerald-300 dark:to-emerald-400 text-transparent bg-clip-text">
+              GoWay
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList className="flex gap-4">
+          <NavigationMenu className="hidden md:flex ml-6">
+            <NavigationMenuList className="flex gap-6">
               {navigationLinks.map((link, index) => (
                 <NavigationMenuItem key={index}>
                   <NavigationMenuLink asChild>
                     <Link
                       to={link.href}
-                      className="font-medium py-1.5 px-2 rounded hover:bg-primary/10 transition"
+                      className="relative font-medium text-sm py-1.5 px-2 text-gray-800 dark:text-gray-200 hover:text-emerald-400 transition group"
                     >
                       {link.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-emerald-400 transition-all duration-300 group-hover:w-full"></span>
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -138,53 +115,55 @@ export default function Navbar() {
             </NavigationMenuList>
           </NavigationMenu>
 
+          {/* Conditional Buttons */}
           {data?.data?.role === "RIDER" && (
             <>
               <Link
                 to="/ride-request"
-                className="font-medium py-1.5 px-2 rounded hover:bg-primary/50 transition bg-primary/30"
+                className="font-medium py-1.5 px-3 rounded-md hover:bg-emerald-400/40 bg-emerald-400/25 transition text-sm text-gray-900 dark:text-white"
               >
                 Request a Ride
               </Link>
               <Link
                 to="/be-a-driver"
-                className="font-medium py-1.5 px-2 rounded hover:bg-primary/50 transition bg-primary/10"
+                className="font-medium py-1.5 px-3 rounded-md hover:bg-emerald-400/40 bg-emerald-400/10 transition text-sm text-gray-900 dark:text-white"
               >
                 Be a Driver
               </Link>
             </>
           )}
-          {data?.data?.role === "ADMIN" ||
-            (data?.data?.role === "SUPER_ADMIN" && (
-              <>
-                <Link
-                  to="/admin/analytics"
-                  className="font-medium py-1.5 px-2 rounded hover:bg-primary/50 transition bg-primary/30"
-                >
-                  Dashboard
-                </Link>
-              </>
-            ))}
+
+          {(data?.data?.role === "ADMIN" ||
+            data?.data?.role === "SUPER_ADMIN") && (
+            <Link
+              to="/admin/analytics"
+              className="font-medium py-1.5 px-3 rounded-md hover:bg-emerald-400/40 bg-emerald-400/25 transition text-sm text-gray-900 dark:text-white"
+            >
+              Dashboard
+            </Link>
+          )}
 
           {data?.data?.role === "DRIVER" && (
-            <>
-              <Link
-                to="/pick-a-ride"
-                className="font-medium py-1.5 px-2 rounded hover:bg-primary/50 transition bg-primary/30"
-              >
-                Pick a ride
-              </Link>
-            </>
+            <Link
+              to="/pick-a-ride"
+              className="font-medium py-1.5 px-3 rounded-md hover:bg-emerald-400/40 bg-emerald-400/25 transition text-sm text-gray-900 dark:text-white"
+            >
+              Pick a Ride
+            </Link>
           )}
         </div>
 
         {/* Right side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <ModeToggle />
           {data?.data?.email ? (
             <Profile />
           ) : (
-            <Button asChild size="sm" className="text-sm">
+            <Button
+              asChild
+              size="sm"
+              className="text-sm bg-emerald-400 hover:bg-emerald-500 text-black dark:text-white transition-all duration-300 hover:shadow-[0_0_10px_rgba(52,211,153,0.6)]"
+            >
               <Link to="/login">Login</Link>
             </Button>
           )}
