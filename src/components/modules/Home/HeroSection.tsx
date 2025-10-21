@@ -3,9 +3,6 @@ import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import Lottie from "lottie-react";
-
-import rideAnimation from "../../../../src/assets/Car Trip.json";
 
 const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 40 },
@@ -16,36 +13,40 @@ export default function HeroSection() {
   const { data: userInfo } = useUserInfoQuery(undefined);
 
   return (
-    <section className="relative w-full pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
-      {/* Background gradient + blob animation */}
-      <div className="absolute inset-0 z-[-2]">
-        <div className="blob blob1"></div>
-      </div>
-      <div className="absolute inset-0 bg-gradient-hero opacity-10 z-[-1]"></div>
+    <section className="relative w-full pt-16 pb-24 lg:pt-28 lg:pb-32 overflow-hidden bg-gradient-to-b from-emerald-50 to-white dark:from-gray-950 dark:to-gray-900">
+      {/* Animated background blobs */}
+      <motion.div
+        className="absolute -top-20 -left-20 w-72 h-72 bg-emerald-400/20 rounded-full blur-[120px] animate-blob"
+        animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute -bottom-20 -right-20 w-96 h-96 bg-emerald-400/30 rounded-full blur-[160px] animate-blob animation-delay-2000"
+        animate={{ x: [0, -60, 0], y: [0, -40, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="lg:grid lg:grid-cols-1 lg:gap-12 items-center">
           {/* Left Section */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="mb-12 lg:mb-0"
           >
             <motion.h1
               variants={fadeUp(0)}
-              className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-emerald-600 dark:from-emerald-300 dark:to-emerald-500 tracking-tight"
             >
-              Move Smarter with<span className="text-primary"> RideNow</span>
+              Move Smarter with <span>GoWay</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp(0.2)}
-              className="mt-6 text-xl text-muted-foreground max-w-2xl"
+              className="mt-6 text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-2xl"
             >
-              Get to your destination faster, safer, and at the best price.
-              Whether you’re heading to work, school, or a night out, RideNow is
-              here for you 24/7.
+              Get to your destination safely, quickly, and affordably. GoWay
+              connects riders with trusted drivers anytime, anywhere.
             </motion.p>
 
             {/* Buttons */}
@@ -54,81 +55,47 @@ export default function HeroSection() {
               className="mt-8 flex flex-col sm:flex-row gap-4"
             >
               {userInfo?.data?.role === "DRIVER" ? (
-                <motion.div variants={fadeUp(0.6)}>
-                  <Link to="/pick-a-ride">
-                    <Button
-                      size="lg"
-                      className="bg-primary hover:shadow-primary text-lg px-8 py-3 cursor-pointer"
-                    >
-                      Pick a Ride
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Button>
-                  </Link>
-                </motion.div>
+                <Link to="/pick-a-ride">
+                  <Button className="bg-emerald-400 hover:bg-emerald-500 text-white px-8 py-3 text-lg flex items-center gap-2">
+                    Pick a Ride <ArrowRight className="w-5 h-5" />
+                  </Button>
+                </Link>
               ) : (
                 <>
-                  <motion.div variants={fadeUp(0.6)}>
-                    <Link to="/ride-request">
-                      <Button
-                        size="lg"
-                        className="bg-primary hover:shadow-primary text-lg px-8 py-3 cursor-pointer"
-                      >
-                        Request a Ride
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
-                    </Link>
-                  </motion.div>
-
-                  <motion.div variants={fadeUp(0.8)}>
-                    <Link to="/be-a-driver">
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="text-lg px-8 py-3 cursor-pointer"
-                      >
-                        Be a Driver
-                      </Button>
-                    </Link>
-                  </motion.div>
+                  <Link to="/ride-request">
+                    <Button className="bg-emerald-400 hover:bg-emerald-500 text-white px-8 py-3 text-lg flex items-center gap-2">
+                      Request a Ride <ArrowRight className="w-5 h-5" />
+                    </Button>
+                  </Link>
+                  <Link to="/be-a-driver">
+                    <Button className="border border-emerald-400 text-emerald-400 hover:bg-emerald-400 hover:text-white px-8 py-3 text-lg">
+                      Be a Driver
+                    </Button>
+                  </Link>
                 </>
               )}
             </motion.div>
 
             {/* Stats */}
             <motion.div
-              variants={fadeUp(1)}
-              className="mt-12 grid grid-cols-3 gap-8"
+              variants={fadeUp(0.8)}
+              className="mt-12 grid grid-cols-3 gap-6 sm:gap-8 text-center"
             >
               {[
-                { value: "2M", label: "Rides Completed" },
-                { value: "80K", label: "Drivers Onboard" },
+                { value: "2M+", label: "Rides Completed" },
+                { value: "80K+", label: "Drivers Onboard" },
                 { value: "4.95", label: "User Satisfaction" },
               ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  variants={fadeUp(1 + i * 0.2)}
-                  className="text-center"
-                >
-                  <div className="text-2xl font-bold text-foreground">
+                <motion.div key={i} variants={fadeUp(0.8 + i * 0.2)}>
+                  <div className="text-2xl font-bold text-foreground dark:text-white">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">
+                    {stat.label}
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
-          </motion.div>
-
-          {/* Right Section (Lottie Animation) */}
-          <motion.div
-            variants={fadeUp(1.2)}
-            className="relative"
-          >
-            <Lottie
-              animationData={rideAnimation}
-              loop={true}
-              autoplay={true}
-              className="w-full h-[400px] lg:h-[500px]"
-            />
           </motion.div>
         </div>
       </div>
