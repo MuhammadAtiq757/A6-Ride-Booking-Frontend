@@ -61,7 +61,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader className="items-center">
         <Link to="/" className=" mb-4">
 
-          <span className="font-bold text-2xl text-primary dark:text-primary-light">
+          <span className="font-bold text-2xl text-left text-primary dark:text-primary-light">
             GoWay
           </span>
         </Link>
