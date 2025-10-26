@@ -37,7 +37,7 @@ export default function SignUp() {
               />
             </motion.div>
             <span className="transition-all duration-300">
-              LoopRide
+              GoWay
             </span>
           </Link>
         </div>

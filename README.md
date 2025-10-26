@@ -1,10 +1,10 @@
-# 🚖 LoopRide
+# 🚖 GoWay
 
 A **modern, scalable**, and fully responsive ride-sharing platform built with **React, Redux Toolkit, RTK Query, and TypeScript**. This frontend application delivers seamless experiences for **Riders**, **Drivers**, and **Admins** with intuitive UI/UX design and robust backend integration.
 
 ## 🎯 Project Overview
 
-LoopRide is a comprehensive transportation solution that connects riders with drivers through an intelligent matching system. The platform offers:
+GoWay is a comprehensive transportation solution that connects riders with drivers through an intelligent matching system. The platform offers:
 
 - **Intuitive booking interface** with real-time driver matching
 - **Multi-role dashboard system** tailored for different user needs

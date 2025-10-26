@@ -35,6 +35,8 @@ export default function Profile() {
   const handleLogout = async () => {
     try {
       await logout(undefined); // call logout API
+      localStorage.removeItem("userInfo");
+      sessionStorage.removeItem("userInfo");
 
       // clear all authApi cache
       dispatch(authApi.util.resetApiState());
@@ -86,7 +88,11 @@ export default function Profile() {
                 .join("")}
             </AvatarFallback>
           </Avatar>
-          <ChevronDownIcon size={16} className="opacity-60" aria-hidden="true" />
+          <ChevronDownIcon
+            size={16}
+            className="opacity-60"
+            aria-hidden="true"
+          />
         </Button>
       </DropdownMenuTrigger>
 
@@ -105,7 +111,11 @@ export default function Profile() {
         <DropdownMenuGroup>
           <Link to={dashboardLink}>
             <DropdownMenuItem>
-              <BookOpenIcon size={16} className="opacity-60" aria-hidden="true" />
+              <BookOpenIcon
+                size={16}
+                className="opacity-60"
+                aria-hidden="true"
+              />
               <span>Dashboard</span>
             </DropdownMenuItem>
           </Link>

@@ -46,7 +46,7 @@ export default function About() {
       <section className="py-24 text-center">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ duration: 0.8 }}>
           <h1 className="text-5xl sm:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-emerald-600 dark:from-emerald-300 dark:to-emerald-500 mb-6">
-            About <span className="text-foreground">LoopRide</span>
+            About <span className="text-foreground">GoWay</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             Connecting communities through safe, sustainable, and innovative transportation since 2020.

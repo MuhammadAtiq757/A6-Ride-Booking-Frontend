@@ -115,7 +115,7 @@ export default function VerifyOtpForm() {
           alt="logo"
           className="w-[40px]"
         />
-        <span className="font-bold text-2xl text-primary">LoopRide</span>
+        <span className="font-bold text-2xl text-primary">GoWay</span>
       </div>
 
       <div className="w-full max-w-md mt-16 border-3 border-primary rounded-2xl">

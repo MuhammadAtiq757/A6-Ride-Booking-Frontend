@@ -66,7 +66,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             className="w-[40px]"
           />
           <span className="font-bold text-2xl text-primary dark:text-primary-light">
-            LoopRide
+            GoWay
           </span>
         </Link>
       </SidebarHeader>

@@ -46,12 +46,7 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.subject ||
-      !formData.message
-    ) {
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
       toast("Please fill in all required fields");
       setIsSubmitting(false);
       return;
@@ -65,9 +60,7 @@ const Contact = () => {
     }
 
     setTimeout(() => {
-      toast(
-        "Thank you for contacting us. We'll get back to you within 24 hours."
-      );
+      toast("Thank you for contacting us. We'll get back to you soon!");
       setFormData({
         name: "",
         email: "",
@@ -130,184 +123,164 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white dark:from-gray-900 dark:to-gray-950 transition-colors duration-300">
       {/* Hero Section */}
       <motion.section
         initial="hidden"
         whileInView="visible"
         variants={fadeUp}
         transition={{ duration: 0.8 }}
-        className="pt-24 pb-16 bg-gradient-to-b from-primary/15 to-background"
+        className="pt-24 pb-16 text-center"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl mb-6">
-              Contact <span className="text-primary">Us</span>
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We're here to help! Reach out to us for support, questions, or
-              feedback. Our team is available 24/7 for emergencies.
-            </p>
-          </div>
-        </div>
+        <h1 className="text-5xl font-extrabold text-gray-800 dark:text-white mb-4">
+          Contact <span className="text-emerald-400">Us</span>
+        </h1>
+        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          We're here to help! Reach out for support, questions, or feedback.
+        </p>
       </motion.section>
 
       {/* Contact Form & Info */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={fadeUp}
-              transition={{ duration: 0.8 }}
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl flex items-center">
-                    <MessageSquare className="w-6 h-6 mr-3 text-primary" />
-                    Send us a Message
-                  </CardTitle>
-                  <CardDescription>
-                    Fill out the form below and we'll get back to you as soon as
-                    possible.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <Label htmlFor="name">Full Name *</Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          placeholder="Enter your full name"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <Label htmlFor="email">Email Address *</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder="Enter your email"
-                          required
-                        />
-                      </div>
-                    </div>
-
+      <section className="py-20 bg-emerald-50/40 dark:bg-gray-800/30 backdrop-blur-sm transition-colors">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Form */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeUp}
+            transition={{ duration: 0.8 }}
+          >
+            <Card className="border-none shadow-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-md">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center text-gray-800 dark:text-white">
+                  <MessageSquare className="w-6 h-6 mr-3 text-emerald-400" />
+                  Send a Message
+                </CardTitle>
+                <CardDescription className="dark:text-gray-400">
+                  Fill out the form and our support team will contact you shortly.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="userType">I am a:</Label>
-                      <select
-                        id="userType"
-                        name="userType"
-                        value={formData.userType}
-                        onChange={handleInputChange}
-                        className="w-full mt-1 px-3 py-2 border border-input rounded-md focus:ring-2 focus:ring-ring"
-                      >
-                        <option value="rider">Rider</option>
-                        <option value="driver">Driver</option>
-                        <option value="business">Business Partner</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="subject">Subject *</Label>
+                      <Label htmlFor="name">Full Name *</Label>
                       <Input
-                        id="subject"
-                        name="subject"
-                        type="text"
-                        value={formData.subject}
+                        id="name"
+                        name="name"
+                        value={formData.name}
                         onChange={handleInputChange}
-                        placeholder="What's this about?"
-                        required
+                        placeholder="John Doe"
+                        className="focus:ring-emerald-400"
                       />
                     </div>
-
                     <div>
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
+                      <Label htmlFor="email">Email *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="Tell us more about your inquiry..."
-                        rows={6}
-                        required
+                        placeholder="john@example.com"
+                        className="focus:ring-emerald-400"
                       />
                     </div>
+                  </div>
 
-                    <Button
-                      type="submit"
-                      className="w-full bg-gradient-primary hover:shadow-primary"
-                      disabled={isSubmitting}
+                  <div>
+                    <Label htmlFor="userType">I am a:</Label>
+                    <select
+                      id="userType"
+                      name="userType"
+                      value={formData.userType}
+                      onChange={handleInputChange}
+                      className="w-full mt-1 px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md focus:ring-2 focus:ring-emerald-400 bg-transparent text-gray-800 dark:text-gray-200"
                     >
-                      {isSubmitting ? (
-                        "Sending..."
-                      ) : (
-                        <>
-                          <Send className="w-4 h-4 mr-2" /> Send Message
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </motion.div>
+                      <option value="rider">Rider</option>
+                      <option value="driver">Driver</option>
+                      <option value="business">Business Partner</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
 
-            {/* Contact Information */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={fadeUp}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="space-y-8"
-            >
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">
-                  Get in Touch
-                </h2>
-                <div className="grid grid-cols-1 gap-6">
-                  {contactInfo.map((info, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Card className="hover:shadow-lg transition-shadow">
-                        <CardHeader>
-                          <div className="flex items-start space-x-4">
-                            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                              {info.icon}
-                            </div>
-                            <div>
-                              <CardTitle className="text-lg">
-                                {info.title}
-                              </CardTitle>
-                              <p className="text-primary font-medium">
-                                {info.details}
-                              </p>
-                              <CardDescription className="mt-2">
-                                {info.description}
-                              </CardDescription>
-                            </div>
-                          </div>
-                        </CardHeader>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
+                  <div>
+                    <Label htmlFor="subject">Subject *</Label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="Subject"
+                      className="focus:ring-emerald-400"
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="message">Message *</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      rows={6}
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Write your message..."
+                      className="focus:ring-emerald-400"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-emerald-400 hover:bg-emerald-500 text-white font-semibold transition-all"
+                  >
+                    {isSubmitting ? "Sending..." : (
+                      <>
+                        <Send className="w-4 h-4 mr-2" /> Send Message
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Contact Info */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeUp}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="space-y-6"
+          >
+            {contactInfo.map((info, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="border-none shadow-md hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur">
+                  <CardHeader className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-emerald-400/10 rounded-full flex items-center justify-center text-emerald-400">
+                      {info.icon}
+                    </div>
+                    <div>
+                      <CardTitle className="text-lg text-gray-800 dark:text-white">
+                        {info.title}
+                      </CardTitle>
+                      <p className="text-emerald-500 font-medium">
+                        {info.details}
+                      </p>
+                      <CardDescription className="mt-1 text-gray-500 dark:text-gray-400">
+                        {info.description}
+                      </CardDescription>
+                    </div>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -317,18 +290,13 @@ const Contact = () => {
         whileInView="visible"
         variants={fadeUp}
         transition={{ duration: 0.8 }}
-        className="py-20 bg-muted/50"
+        className="py-20 bg-emerald-100/50 dark:bg-gray-800/40"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-              How Can We Help?
-            </h2>
-            <p className="mt-4 text-xl text-muted-foreground">
-              Choose the support category that best matches your needs
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">
+            How Can We Help?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {supportTypes.map((type, index) => (
               <motion.div
                 key={index}
@@ -336,12 +304,14 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <Card className="bg-white/80 dark:bg-gray-900/80 backdrop-blur border-none shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <CardHeader>
-                    <CardTitle className="text-xl">{type.title}</CardTitle>
+                    <CardTitle className="text-xl text-emerald-500">
+                      {type.title}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base">
+                    <CardDescription className="text-gray-600 dark:text-gray-400 text-base">
                       {type.description}
                     </CardDescription>
                   </CardContent>
@@ -358,28 +328,28 @@ const Contact = () => {
         whileInView="visible"
         variants={fadeUp}
         transition={{ duration: 0.8 }}
-        className="py-20 bg-primary"
+        className="py-20 bg-emerald-400 text-center text-white dark:bg-emerald-500"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-primary-foreground sm:text-4xl mb-6">
-            Need Emergency Support?
-          </h2>
-          <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            For immediate assistance during a ride or urgent safety concerns,
-            use our emergency support options available 24/7.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-3">
-              Emergency Hotline
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg px-8 py-3 border-primary-foreground text-primary-foreground bg-primary hover:bg-primary-foreground hover:text-primary"
-            >
-              Safety Center
-            </Button>
-          </div>
+        <h2 className="text-3xl font-bold mb-4">Need Emergency Support?</h2>
+        <p className="text-lg mb-8 max-w-2xl mx-auto">
+          For immediate assistance during a ride or urgent safety concerns, use
+          our 24/7 emergency support options.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Button
+            size="lg"
+            variant="secondary"
+            className="bg-white text-emerald-500 hover:bg-emerald-100"
+          >
+            Emergency Hotline
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-white text-white hover:bg-white hover:text-emerald-500"
+          >
+            Safety Center
+          </Button>
         </div>
       </motion.section>
     </div>

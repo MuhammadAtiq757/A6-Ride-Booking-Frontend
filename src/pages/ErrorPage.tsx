@@ -183,7 +183,7 @@ const ErrorPage: React.FC = () => {
                 }}
               />
             </motion.div>
-            <span className=" transition-all duration-300">LoopRide</span>
+            <span className=" transition-all duration-300">GoWay</span>
           </Link>
         </div>
 
