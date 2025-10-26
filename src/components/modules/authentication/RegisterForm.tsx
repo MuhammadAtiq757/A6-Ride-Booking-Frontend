@@ -112,9 +112,7 @@ export function RegisterForm({
       }
     }
   };
-  const handleGoogleLogin = () => {
-    window.location.href = `${BASE_URL}/auth/google`;
-  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <div className="flex flex-col items-center gap-2 text-center">
@@ -216,7 +214,6 @@ export function RegisterForm({
         </Form>
       </div>
       <Button
-        onClick={handleGoogleLogin}
         type="button"
         variant="outline"
         className="w-full cursor-pointer rounded border-white bg-primary/15 hover:bg-primary/25 hover:text-primary"

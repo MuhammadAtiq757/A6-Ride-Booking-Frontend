@@ -78,7 +78,7 @@ export default function Profile() {
         <Button variant="ghost" className="h-auto p-0 hover:bg-transparent">
           <Avatar>
             <AvatarImage
-              src="https://github.com/shadcn.png"
+              src="https://cdn-icons-png.flaticon.com/512/6858/6858504.png"
               alt={userInfo.data.name}
             />
             <AvatarFallback>

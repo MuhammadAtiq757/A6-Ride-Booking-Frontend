@@ -25,7 +25,6 @@ const loginFormSchema = z.object({
   password: z.string().min(8, { error: "Password is too short" }),
 });
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export function LoginForm({
   className,
@@ -66,9 +65,9 @@ if (res.success && (res.data?.accessToken || res.data?.token)) {
 
 
 
-  const handleGoogleLogin = () => {
-    window.location.href = `${BASE_URL}/auth/google`;
-  };
+  // const handleGoogleLogin = () => {
+  //   window.location.href = `${BASE_URL}/auth/google`;
+  // };
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -125,7 +124,7 @@ if (res.success && (res.data?.accessToken || res.data?.token)) {
         </Form>
 
         <Button
-          onClick={handleGoogleLogin}
+          // onClick={handleGoogleLogin}
           type="button"
           variant="outline"
           className="w-full cursor-pointer rounded border-white bg-primary/15 hover:bg-primary/25 hover:text-primary"

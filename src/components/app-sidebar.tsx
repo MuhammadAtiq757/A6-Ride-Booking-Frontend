@@ -59,12 +59,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader className="items-center">
-        <Link to="/" className="flex items-center space-x-2 mb-4">
-          <img
-            src="https://cdn-icons-png.freepik.com/512/10028/10028767.png?ga=GA1.1.1697682617.1758554927"
-            alt="logo"
-            className="w-[40px]"
-          />
+        <Link to="/" className=" mb-4">
+
           <span className="font-bold text-2xl text-primary dark:text-primary-light">
             GoWay
           </span>
