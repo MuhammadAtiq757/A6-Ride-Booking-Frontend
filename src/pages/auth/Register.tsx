@@ -22,22 +22,10 @@ export default function SignUp() {
                 ease: "easeInOut",
               }}
             >
-              <motion.img
-                src="https://cdn-icons-png.freepik.com/512/10028/10028767.png?ga=GA1.1.1697682617.1758554927"
-                alt="logo"
-                className="w-[40px]"
-                animate={{
-                  rotate: [-2, 2, -2],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+
             </motion.div>
             <span className="transition-all duration-300">
-              GoWay
+              LoopRide
             </span>
           </Link>
         </div>
