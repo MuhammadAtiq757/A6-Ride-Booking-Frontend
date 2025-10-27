@@ -84,7 +84,7 @@ export default function Profile() {
             <AvatarFallback>
               {userInfo.data.name
                 .split(" ")
-                .map((n) => n[0])
+                .map(() => [0])
                 .join("")}
             </AvatarFallback>
           </Avatar>

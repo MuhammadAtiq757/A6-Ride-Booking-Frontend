@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Award, Globe, Heart, Shield, Target, Zap } from "lucide-react";
+import { Globe, Heart, Shield,Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 

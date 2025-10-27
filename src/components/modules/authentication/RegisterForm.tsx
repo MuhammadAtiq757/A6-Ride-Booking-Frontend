@@ -25,7 +25,6 @@ import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const registerSchema = z
   .object({
