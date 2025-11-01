@@ -1,5 +1,5 @@
 const config = {
-  baseURL: "http://localhost:5000/api/v1",
+  baseURL: "https://a6-ride-booking-backend.vercel.app/api/v1",
 };
 
 export default config;
